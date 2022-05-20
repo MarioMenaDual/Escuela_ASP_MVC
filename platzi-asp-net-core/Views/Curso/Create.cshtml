@@ -1,0 +1,50 @@
+@model Curso
+@{
+    ViewData["Title"] = "Creating a Course";
+     Layout = "_Layout";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h2>@ViewBag.Message</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+       
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+           
+            </div>
+            <div class="form-group">
+                <label asp-for="Jornada" class="control-label"></label>
+                <select asp-for="Jornada" class="form-control" asp-items="Html.GetEnumSelectList<TiposJornada>()">
+                    <option value="">Please select...</option>
+                </select>
+                <span asp-validation-for="Jornada" class="text-danger"></span>
+               
+            </div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+              <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Escuela" class="control-label"></label>
+                <select asp-for="EscuelaId" class ="form-control" asp-items="ViewBag.EscuelaId"></select>
+                <span asp-validation-for="EscuelaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
